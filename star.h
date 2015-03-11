@@ -1,13 +1,13 @@
 #include "common.h"
 #include "BaseGraphicObject.h"
 #define STAR_EFFECT_FILENAME _T("star.fx")
-#define STAR_CLOUDS_FILENAME _T("clouds.tga")
-#define STAR_CROWN_FILENAME _T("crown.tga")
+#define STAR_CLOUDS_FILENAME _T("clouds.dds")
+#define STAR_CROWN_FILENAME _T("crown.dds")
 #define STAR_TEXTURE_WHOLESIZE 1024
 #define STAR_TEXTURE_ACTUALSIZE 256
 #define STAR_SPRITE_SIZE 10.0f
-#define STAR_CreateTextureFast(lpTex,lpDevice) \
-        D3DXCreateTexture(lpDevice,STAR_TEXTURE_ACTUALSIZE,STAR_TEXTURE_ACTUALSIZE, \
+#define STAR_CreateTextureFast(lpTex,size,lpDevice) \
+        D3DXCreateTexture(lpDevice,size,size, \
         D3DX_DEFAULT,D3DUSAGE_DYNAMIC,D3DFMT_A8R8G8B8,D3DPOOL_DEFAULT,&lpTex)
 
 class TStar : public TBaseGraphicObject {

@@ -1,5 +1,6 @@
 #include "common.h"
-
+#ifndef VERTEXCONTAINER_H
+#define VERTEXCONTAINER_H
 class TVertexContainer {
 private:
     LPDIRECT3DDEVICE9 device;
@@ -18,4 +19,4 @@ public:
     void FillIndices(void *indices);
     void Render();
 };
-
+#endif // VERTEXCONTAINER_H

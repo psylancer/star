@@ -3,7 +3,7 @@
 void TStar::UpdateMatrix()
 {
     D3DXMATRIX mWorld;
-    D3DXMatrixTranslation(&mWorld,viewerPosition.x,viewerPosition.y,distance);
+    D3DXMatrixTranslation(&mWorld,viewerPosition.x,viewerPosition.y,viewerPosition.z+distance);
     D3DXMatrixMultiply(&mWorld,&mWorld,&mViewProjection);
     effect->SetMatrix(hWVP,&mWorld);
 }
@@ -59,15 +59,27 @@ TStar::TStar(LPDIRECT3DDEVICE9 device): TBaseGraphicObject(device)
     D3DXMatrixIdentity(&mViewProjection);
     viewerPosition=D3DXVECTOR3(0.0f,0.0f,0.0f);
     distance=1.0f;
+    LPDIRECT3DTEXTURE9 texTemp;
+    LPDIRECT3DSURFACE9 surfSrc,surfDest;
+    STAR_CreateTextureFast(texCloudsWhole,STAR_TEXTURE_WHOLESIZE,device);
+    STAR_CreateTextureFast(texCrownWhole,STAR_TEXTURE_WHOLESIZE,device);
+    STAR_CreateTextureFast(texCloudsCurrent,STAR_TEXTURE_ACTUALSIZE,device);
+    STAR_CreateTextureFast(texCloudsNext,STAR_TEXTURE_ACTUALSIZE,device);
+    STAR_CreateTextureFast(texCrownCurrent,STAR_TEXTURE_ACTUALSIZE,device);
+    STAR_CreateTextureFast(texCrownNext,STAR_TEXTURE_ACTUALSIZE,device);
+    STAR_CreateTextureFast(texGradient,STAR_TEXTURE_ACTUALSIZE,device);
     D3DXCreateTextureFromFileEx(device,STAR_CLOUDS_FILENAME,STAR_TEXTURE_WHOLESIZE,STAR_TEXTURE_WHOLESIZE,D3DX_DEFAULT,0,
-                                D3DFMT_UNKNOWN,D3DPOOL_SYSTEMMEM,D3DX_DEFAULT,D3DX_DEFAULT,0,NULL,NULL,&texCloudsWhole);
+                                D3DFMT_UNKNOWN,D3DPOOL_SYSTEMMEM,D3DX_DEFAULT,D3DX_DEFAULT,0,NULL,NULL,&texTemp);
+    texTemp->GetSurfaceLevel(0,&surfSrc);
+    texCloudsWhole->GetSurfaceLevel(0,&surfDest);
+    D3DXLoadSurfaceFromSurface(surfDest,NULL,NULL,surfSrc,NULL,NULL,D3DX_DEFAULT,0);
+    SafeRelease(texTemp);
     D3DXCreateTextureFromFileEx(device,STAR_CROWN_FILENAME,STAR_TEXTURE_WHOLESIZE,STAR_TEXTURE_WHOLESIZE,D3DX_DEFAULT,0,
-                                D3DFMT_UNKNOWN,D3DPOOL_SYSTEMMEM,D3DX_DEFAULT,D3DX_DEFAULT,0,NULL,NULL,&texCrownWhole);
-    STAR_CreateTextureFast(texCloudsCurrent,device);
-    STAR_CreateTextureFast(texCloudsNext,device);
-    STAR_CreateTextureFast(texCrownCurrent,device);
-    STAR_CreateTextureFast(texCrownNext,device);
-    STAR_CreateTextureFast(texGradient,device);
+                                D3DFMT_UNKNOWN,D3DPOOL_SYSTEMMEM,D3DX_DEFAULT,D3DX_DEFAULT,0,NULL,NULL,&texTemp);
+    texTemp->GetSurfaceLevel(0,&surfSrc);
+    texCrownWhole->GetSurfaceLevel(0,&surfDest);
+    D3DXLoadSurfaceFromSurface(surfDest,NULL,NULL,surfSrc,NULL,NULL,D3DX_DEFAULT,0);
+    SafeRelease(texTemp);
     colorMain=0xffffffff;
     colorHighlight=0xffffffff;
     periodClouds=1000;
@@ -96,6 +108,7 @@ TStar::TStar(LPDIRECT3DDEVICE9 device): TBaseGraphicObject(device)
         return;
     }
     hTechnic=effect->GetTechniqueByName("MainTech");
+    effect->SetTechnique(hTechnic);
     hWVP=effect->GetParameterByName(0,"mWVP");
     hColorMain=effect->GetParameterByName(0,"colorMain");
     hColorHighlight=effect->GetParameterByName(0,"colorHighlight");

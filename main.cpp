@@ -1,5 +1,6 @@
 #include "shell.h"
 #include "star.h"
+#include "spacebox.h"
 #include "stdio.h"
 #define MOUSE_SENSITIVITY 0.02
 #define MOVE_SPEED 0.05
@@ -9,6 +10,7 @@ TShell *shell=NULL;
 LPDIRECT3DDEVICE9 device=NULL;
 LPD3DXFONT font=NULL;
 TStar *star=NULL;
+TSpaceBox *spacebox=NULL;
 D3DXVECTOR3 pos(0.0f,0.0f,0.0f),at(0.0f,0.0f,1.0f);
 POINT mouseCoords;
 DWORD frameCount=0;
@@ -32,6 +34,7 @@ void SetupGeometry()
 {
     star=new TStar(device);
     star->Init(D3DXCOLOR(0xffff0000),D3DXCOLOR(0xffffff00),5000,6000,15.0f);
+    spacebox=new TSpaceBox(device);
 }
 
 void SetupFont()
@@ -52,12 +55,15 @@ void UpdateView()
     D3DXMatrixLookAtLH(&mView,&pos,&at,new D3DXVECTOR3(0.0f,1.0f,0.0f));
     star->UpdateViewProjection(mView*mProj);
     star->UpdateViewerPosition(pos);
+    spacebox->UpdateViewProjection(mView*mProj);
+    spacebox->UpdateViewerPosition(pos);
 }
 
 void Reshape(RECT winRect)
 {
     D3DXMatrixPerspectiveFovLH(&mProj,D3DX_PI/4.0f,(winRect.right-winRect.left)/((float)winRect.bottom-winRect.top),1.0f,1000.0f);
     star->UpdateViewProjection(mView*mProj);
+    spacebox->UpdateViewProjection(mView*mProj);
 }
 
 void MouseMove(INT x, INT y, WORD buttons)
@@ -150,6 +156,7 @@ void Redraw()
     device->Clear(0,NULL,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER|D3DCLEAR_STENCIL,D3DCOLOR_XRGB(0,0,0),1.0f,0);
     star->UpdateProgress(shell->GetDeltaTime());
     device->BeginScene();
+    spacebox->Render();
     star->Render();
     if(frameMilliseconds>1000)
     {

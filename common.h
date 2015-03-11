@@ -5,6 +5,7 @@
 #include "tchar.h"
 #include "d3d9.h"
 #include "d3dx9.h"
+#include "stdio.h"
 #define SafeRelease(lpCOM) if(lpCOM!=NULL){ lpCOM->Release(); lpCOM=NULL; }
 #define SafeDelete(obj) if(obj!=NULL){ delete obj; obj=NULL; }
 #define Die(msg) { MessageBox(NULL,msg,_T("Fatal error"),0); PostQuitMessage(0); }

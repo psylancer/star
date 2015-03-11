@@ -43,6 +43,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="shell.cpp" />
 		<Unit filename="shell.h" />
+		<Unit filename="spacebox.cpp" />
+		<Unit filename="spacebox.h" />
 		<Unit filename="star.cpp" />
 		<Unit filename="star.h" />
 		<Extensions>

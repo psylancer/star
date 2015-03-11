@@ -1,6 +1,7 @@
 #include "common.h"
 #include "VertexContainer.h"
-
+#ifndef BASEGRAPHICOBJECT_H
+#define BASEGRAPHICOBJECT_H
 class TBaseGraphicObject {
 public:
     TBaseGraphicObject(LPDIRECT3DDEVICE9 device);
@@ -13,3 +14,4 @@ protected:
     virtual void PreRender();
     virtual void PostRender();
 };
+#endif // BASEGRAPHICOBJECT_H

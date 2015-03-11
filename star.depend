@@ -101,3 +101,51 @@
 1426006148 source:d:\sources\star\vertexcontainer.cpp
 	"VertexContainer.h"
 
+1426059366 source:d:\github\star\basegraphicobject.cpp
+	"BaseGraphicObject.h"
+
+1426063866 d:\github\star\basegraphicobject.h
+	"common.h"
+	"VertexContainer.h"
+
+1426064208 d:\github\star\common.h
+	"windows.h"
+	"time.h"
+	"tchar.h"
+	"d3d9.h"
+	"d3dx9.h"
+	"stdio.h"
+
+1426063845 d:\github\star\vertexcontainer.h
+	"common.h"
+
+1426068995 source:d:\github\star\main.cpp
+	"shell.h"
+	"star.h"
+	"spacebox.h"
+	"stdio.h"
+
+1426059366 d:\github\star\shell.h
+	"common.h"
+
+1426069009 d:\github\star\star.h
+	"common.h"
+	"BaseGraphicObject.h"
+
+1426059366 source:d:\github\star\shell.cpp
+	"shell.h"
+	"stdio.h"
+
+1426059366 source:d:\github\star\vertexcontainer.cpp
+	"VertexContainer.h"
+
+1426068983 source:d:\github\star\spacebox.cpp
+	"spacebox.h"
+
+1426069076 d:\github\star\spacebox.h
+	"common.h"
+	"BaseGraphicObject.h"
+
+1426068969 source:d:\github\star\star.cpp
+	"star.h"
+

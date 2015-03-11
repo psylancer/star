@@ -1,0 +1,8 @@
+1. clouds, difference clouds, invert, adjust levels
+2. temperature color (screen)
+3. circle gradient:
+	position	0	60	80	85	90	100
+	opacity		0	0	100	100	50	0
+	color		wh	wh	wh	main	main	main
+
+4. clouds, difference clouds, invert (screen) - with circle mask&gradient

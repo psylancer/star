@@ -1,0 +1,103 @@
+# depslib dependency file v1.0
+1425654574 source:d:\sources\star\geometry.cpp
+	"geometry.h"
+
+1425654574 d:\sources\star\geometry.h
+	"d3d9.h"
+	"d3dx9.h"
+	"shell.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3d9.h
+	<stdlib.h>
+	<objbase.h>
+	<windows.h>
+	"d3d9types.h"
+	"d3d9caps.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3d9types.h
+	<float.h>
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3d9caps.h
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9.h
+	<limits.h>
+	"d3d9.h"
+	"d3dx9math.h"
+	"d3dx9core.h"
+	"d3dx9xof.h"
+	"d3dx9mesh.h"
+	"d3dx9shader.h"
+	"d3dx9effect.h"
+	"d3dx9tex.h"
+	"d3dx9shape.h"
+	"d3dx9anim.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9math.h
+	"d3dx9.h"
+	<math.h>
+	"d3dx9math.inl"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9math.inl
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9core.h
+	"d3dx9.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9xof.h
+	"d3dx9.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9mesh.h
+	"d3dx9.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9shader.h
+	"d3dx9.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9effect.h
+	"d3dx9.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9tex.h
+	"d3dx9.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9shape.h
+	"d3dx9.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9anim.h
+
+1426006148 d:\sources\star\shell.h
+	"common.h"
+
+1426017453 source:d:\sources\star\main.cpp
+	"shell.h"
+	"star.h"
+	"stdio.h"
+
+1426006148 source:d:\sources\star\shell.cpp
+	"shell.h"
+	"stdio.h"
+
+1426006148 d:\sources\star\common.h
+	"windows.h"
+	"time.h"
+	"tchar.h"
+	"d3d9.h"
+	"d3dx9.h"
+
+1426006148 d:\sources\star\star.h
+	"common.h"
+	"BaseGraphicObject.h"
+
+1426006148 d:\sources\star\basegraphicobject.h
+	"common.h"
+	"VertexContainer.h"
+
+1426006148 d:\sources\star\vertexcontainer.h
+	"common.h"
+
+1426017258 source:d:\sources\star\star.cpp
+	"star.h"
+
+1426006148 source:d:\sources\star\basegraphicobject.cpp
+	"BaseGraphicObject.h"
+
+1426006148 source:d:\sources\star\vertexcontainer.cpp
+	"VertexContainer.h"
+

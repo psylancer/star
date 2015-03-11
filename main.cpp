@@ -33,7 +33,7 @@ void SetupDevice()
 void SetupGeometry()
 {
     star=new TStar(device);
-    star->Init(D3DXCOLOR(0xffff0000),D3DXCOLOR(0xffffff00),5000,6000,15.0f);
+    star->Init(D3DXCOLOR(0xffff8000),D3DXCOLOR(0xffffff00),5000,6000,15.0f);
     spacebox=new TSpaceBox(device);
 }
 

@@ -62,43 +62,45 @@
 
 1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx9anim.h
 
-1426006148 d:\sources\star\shell.h
+1426098769 d:\sources\star\shell.h
 	"common.h"
 
-1426017453 source:d:\sources\star\main.cpp
+1426104298 source:d:\sources\star\main.cpp
 	"shell.h"
 	"star.h"
+	"spacebox.h"
 	"stdio.h"
 
-1426006148 source:d:\sources\star\shell.cpp
+1426098769 source:d:\sources\star\shell.cpp
 	"shell.h"
 	"stdio.h"
 
-1426006148 d:\sources\star\common.h
+1426098769 d:\sources\star\common.h
 	"windows.h"
 	"time.h"
 	"tchar.h"
 	"d3d9.h"
 	"d3dx9.h"
+	"stdio.h"
 
-1426006148 d:\sources\star\star.h
+1426098769 d:\sources\star\star.h
 	"common.h"
 	"BaseGraphicObject.h"
 
-1426006148 d:\sources\star\basegraphicobject.h
+1426098769 d:\sources\star\basegraphicobject.h
 	"common.h"
 	"VertexContainer.h"
 
-1426006148 d:\sources\star\vertexcontainer.h
+1426098769 d:\sources\star\vertexcontainer.h
 	"common.h"
 
-1426017258 source:d:\sources\star\star.cpp
+1426098769 source:d:\sources\star\star.cpp
 	"star.h"
 
-1426006148 source:d:\sources\star\basegraphicobject.cpp
+1426098769 source:d:\sources\star\basegraphicobject.cpp
 	"BaseGraphicObject.h"
 
-1426006148 source:d:\sources\star\vertexcontainer.cpp
+1426098769 source:d:\sources\star\vertexcontainer.cpp
 	"VertexContainer.h"
 
 1426059366 source:d:\github\star\basegraphicobject.cpp
@@ -148,4 +150,11 @@
 
 1426068969 source:d:\github\star\star.cpp
 	"star.h"
+
+1426104277 d:\sources\star\spacebox.h
+	"common.h"
+	"BaseGraphicObject.h"
+
+1426104282 source:d:\sources\star\spacebox.cpp
+	"spacebox.h"
 

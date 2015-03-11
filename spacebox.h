@@ -1,8 +1,8 @@
 #include "common.h"
 #include "BaseGraphicObject.h"
 #define SPACEBOX_TEXTURE_FILENAME _T("spacebox.tga")
+#define SPACEBOX_GEOMETRY_FILENAME _T("spacebox.x")
 #define SPACEBOX_EFFECT_FILENAME _T("spacebox.fx")
-#define SPACEBOX_SPRITE_SIZE 5.0f
 
 class TSpaceBox : public TBaseGraphicObject {
 public:

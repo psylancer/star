@@ -6,7 +6,7 @@ sampler sampBox = sampler_state
 	Texture = <texBox>;
 	MinFilter = LINEAR;
 	MagFilter = LINEAR;
-	MipFilter = LINEAR;
+	MipFilter = POINT;
 	AddressU  = WRAP;
 	AddressV  = WRAP;
 };

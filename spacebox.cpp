@@ -5,54 +5,22 @@ TSpaceBox::TSpaceBox(LPDIRECT3DDEVICE9 device) : TBaseGraphicObject(device)
     viewerPosition=D3DXVECTOR3(0.0f,0.0f,0.0f);
     D3DXMatrixIdentity(&mViewProjection);
     D3DXCreateTextureFromFile(device,SPACEBOX_TEXTURE_FILENAME,&texBox);
+    LPD3DXMESH meshBox=NULL;
+    D3DXLoadMeshFromX(SPACEBOX_GEOMETRY_FILENAME,0,device,NULL,NULL,NULL,NULL,&meshBox);
     //geometry
-    TTexturedVertex vertices[24]={{-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,0.5f,0.25f}, //front
-                                  {-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,0.5f,0.0f},
-                                  {SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,1.0f,0.0f},
-                                  {SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,1.0f,0.25f},
-
-                                  {-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,0.0f,0.25f}, //top
-                                  {-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.0f,0.0f},
-                                  {SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.5f,0.0f},
-                                  {SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,0.5f,0.25f},
-
-                                  {SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.0f,0.5f}, //back
-                                  {SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.0f,0.25f},
-                                  {-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.5f,0.25f},
-                                  {-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.5f,0.5f},
-
-                                  {-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.0f,0.75f}, //bottom
-                                  {-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,0.0f,0.5f},
-                                  {SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,0.5f,0.5f},
-                                  {SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.5f,0.75f},
-
-                                  {-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.5f,0.75f}, //left
-                                  {-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,0.5f,0.5f},
-                                  {-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,1.0f,0.5f},
-                                  {-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,1.0f,0.75f},
-
-                                  {SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,0.5f,0.5f}, //right
-                                  {SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,0.5f,0.25f},
-                                  {SPACEBOX_SPRITE_SIZE,SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,1.0f,0.25f},
-                                  {SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,-SPACEBOX_SPRITE_SIZE,1.0f,0.5f}};
-    WORD indices[36], idx;
-    for(WORD i=0;i<6;i++)
-    {
-        idx=i*6;
-        indices[idx]=i*4;
-        indices[idx+1]=i*4+1;
-        indices[idx+2]=i*4+2;
-        indices[idx+3]=i*4;
-        indices[idx+4]=i*4+2;
-        indices[idx+5]=i*4+3;
-    }
     D3DVERTEXELEMENT9 elements[]={{0,    0,  D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT,  D3DDECLUSAGE_POSITION,  0},
                                   {0,   12,  D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT,  D3DDECLUSAGE_TEXCOORD,  0},
                                   D3DDECL_END()};
     geometry=new TVertexContainer(device);
-    geometry->Init(24,36,12,elements,sizeof(TTexturedVertex));
-    geometry->FillVertices(vertices);
-    geometry->FillIndices(indices);
+    geometry->Init(meshBox->GetNumVertices(),meshBox->GetNumFaces()*3,meshBox->GetNumFaces(),elements,sizeof(TTexturedVertex));
+    VOID *ptr;
+    meshBox->LockVertexBuffer(D3DLOCK_READONLY,&ptr);
+    geometry->FillVertices(ptr);
+    meshBox->UnlockVertexBuffer();
+    meshBox->LockIndexBuffer(D3DLOCK_READONLY,&ptr);
+    geometry->FillIndices(ptr);
+    meshBox->UnlockIndexBuffer();
+    SafeRelease(meshBox);
     //effect
     LPD3DXBUFFER errors=NULL;
     D3DXCreateEffectFromFile(device,SPACEBOX_EFFECT_FILENAME,NULL,NULL,D3DXSHADER_DEBUG,NULL,&effect,&errors);

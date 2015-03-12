@@ -132,7 +132,7 @@ void TShell::Init(INT iWidth, INT iHeight, LPCSTR lpTitle, BOOL bFullScreen)
     dpp.hDeviceWindow=hWindow;
     dpp.SwapEffect=D3DSWAPEFFECT_DISCARD;
     dpp.Windowed=!bFullScreen;
-    dpp.PresentationInterval=D3DPRESENT_INTERVAL_IMMEDIATE;
+    dpp.PresentationInterval=D3DPRESENT_INTERVAL_ONE;
     lpD3d->CreateDevice(D3DADAPTER_DEFAULT,D3DDEVTYPE_HAL,hWindow,(caps.DevCaps & D3DDEVCAPS_HWTRANSFORMANDLIGHT ? D3DCREATE_HARDWARE_VERTEXPROCESSING : D3DCREATE_SOFTWARE_VERTEXPROCESSING),&dpp,&lpDevice);
 }
 

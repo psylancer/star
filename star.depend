@@ -121,7 +121,7 @@
 1426063845 d:\github\star\vertexcontainer.h
 	"common.h"
 
-1426068995 source:d:\github\star\main.cpp
+1426145872 source:d:\github\star\main.cpp
 	"shell.h"
 	"star.h"
 	"spacebox.h"
@@ -134,21 +134,21 @@
 	"common.h"
 	"BaseGraphicObject.h"
 
-1426059366 source:d:\github\star\shell.cpp
+1426142695 source:d:\github\star\shell.cpp
 	"shell.h"
 	"stdio.h"
 
 1426059366 source:d:\github\star\vertexcontainer.cpp
 	"VertexContainer.h"
 
-1426068983 source:d:\github\star\spacebox.cpp
+1426142591 source:d:\github\star\spacebox.cpp
 	"spacebox.h"
 
-1426069076 d:\github\star\spacebox.h
+1426145921 d:\github\star\spacebox.h
 	"common.h"
 	"BaseGraphicObject.h"
 
-1426068969 source:d:\github\star\star.cpp
+1426145856 source:d:\github\star\star.cpp
 	"star.h"
 
 1426104277 d:\sources\star\spacebox.h

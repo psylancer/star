@@ -159,7 +159,7 @@ void TStar::Init(D3DXCOLOR colorMain, D3DXCOLOR colorHighlight, clock_t periodCl
         {
             y=j/(float)(STAR_TEXTURE_ACTUALSIZE-1)-0.5f;
             radiusVector=sqrt(x*x+y*y);
-            if((radiusVector<=0.16f)||(radiusVector>0.48f))
+            if((radiusVector<=0.16f)||(radiusVector>0.49f))
             {
                 ptr[j]=0x00000000;
             }
@@ -176,9 +176,9 @@ void TStar::Init(D3DXCOLOR colorMain, D3DXCOLOR colorHighlight, clock_t periodCl
                 b=colorHighlight.b*(1.0f-alpha)+colorMain.b*alpha;
                 ptr[j]=D3DCOLOR_COLORVALUE(r,g,b,1.0f);
             }
-            else if((radiusVector>0.42f)&&(radiusVector<0.48f))
+            else if((radiusVector>0.42f)&&(radiusVector<0.49f))
             {
-                alpha=(0.48f-radiusVector)/0.06f;
+                alpha=(0.49f-radiusVector)/0.07f;
                 ptr[j]=D3DCOLOR_COLORVALUE(colorMain.r,colorMain.g,colorMain.b,alpha);
             }
         }
